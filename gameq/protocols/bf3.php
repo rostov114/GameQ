@@ -122,6 +122,8 @@ class GameQ_Protocols_Bf3 extends GameQ_Protocols
 
     protected function process_status()
     {
+    	//file_put_contents('/home/development/GameQ/bf3.txt', $this->packets_response[self::PACKET_STATUS]);
+
     	// Make sure we have a valid response
     	if(!$this->hasValidResponse(self::PACKET_STATUS))
     	{
@@ -153,13 +155,13 @@ class GameQ_Protocols_Bf3 extends GameQ_Protocols
 
     	// These are the same no matter what mode the server is in
     	$result->add('hostname', $words[1]);
-    	$result->add('numplayers', $words[2]);
-    	$result->add('maxplayers', $words[3]);
+    	$result->add('numplayers', (int) $words[2]);
+    	$result->add('maxplayers', (int) $words[3]);
     	$result->add('gametype', $words[4]);
     	$result->add('map', $words[5]);
 
-    	$result->add('roundsplayed', $words[6]);
-    	$result->add('roundstotal', $words[7]);
+    	$result->add('roundsplayed', (int) $words[6]);
+    	$result->add('roundstotal', (int) $words[7]);
 
     	// Figure out the number of teams
     	$num_teams = intval($words[8]);
@@ -183,8 +185,8 @@ class GameQ_Protocols_Bf3 extends GameQ_Protocols
     	$result->add('ranked', (bool) $words[$index_current + 2]);
     	$result->add('punkbuster', (bool) $words[$index_current + 3]);
     	$result->add('password', (bool) $words[$index_current + 4]);
-    	$result->add('uptime', $words[$index_current + 5]);
-    	$result->add('roundtime', $words[$index_current + 6]);
+    	$result->add('uptime', (int) $words[$index_current + 5]);
+    	$result->add('roundtime', (int) $words[$index_current + 6]);
 
     	// Added in R9
 	    $result->add('ip_port', $words[$index_current + 7]);

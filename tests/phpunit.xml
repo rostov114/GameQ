@@ -1,6 +1,6 @@
 <phpunit backupGlobals="true"
          backupStaticAttributes="false"
-         bootstrap="../GameQ.php"
+         bootstrap="core.php"
          cacheTokens="true"
          colors="true"
          convertErrorsToExceptions="true"
@@ -18,10 +18,8 @@
          strict="false"
          verbose="false">
 	<testsuites>
-	  <testsuite name="My Test Suite">
-	    <directory>/path/to/*Test.php files</directory>
-	    <file>/path/to/MyTest.php</file>
-	    <exclude>/path/to/exclude</exclude>
+	  <testsuite name="protocols_bf3">
+	    <directory suffix=".php">protocols/bf3/</directory>
 	  </testsuite>
 	</testsuites>
 </phpunit>
